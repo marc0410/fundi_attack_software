@@ -1,6 +1,7 @@
 "use client"
 
 import { Camera, Lock, FileBarChart, ArrowRight } from "lucide-react"
+import { InvoiceSimulator } from "./invoice-simulator"
 
 const steps = [
   {
@@ -87,6 +88,8 @@ export function HowItWorks() {
             ))}
           </div>
         </div>
+
+        <InvoiceSimulator />
       </div>
     </section>
   )
