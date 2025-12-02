@@ -2,16 +2,18 @@
 
 import { useState, useEffect } from "react"
 import { MapPin } from "lucide-react"
+import Image from "next/image"
 
 const signupLocations = [
-  { city: "Lagos", country: "Nigeria", x: 42, y: 48, count: 142 },
-  { city: "Nairobi", country: "Kenya", x: 68, y: 52, count: 98 },
-  { city: "Accra", country: "Ghana", x: 38, y: 50, count: 67 },
-  { city: "Johannesburg", country: "South Africa", x: 56, y: 78, count: 84 },
-  { city: "Cairo", country: "Egypt", x: 60, y: 22, count: 53 },
-  { city: "Casablanca", country: "Morocco", x: 32, y: 18, count: 31 },
-  { city: "Dar es Salaam", country: "Tanzania", x: 70, y: 58, count: 29 },
-  { city: "Kigali", country: "Rwanda", x: 62, y: 52, count: 24 },
+  { city: "Lagos", country: "Nigeria", x: 48, y: 52, count: 142 },
+  { city: "Nairobi", country: "Kenya", x: 75, y: 58, count: 98 },
+  { city: "Accra", country: "Ghana", x: 42, y: 54, count: 67 },
+  { city: "Abidjan", country: "Côte d'Ivoire", x: 36, y: 52, count: 45 },
+  { city: "Johannesburg", country: "South Africa", x: 60, y: 85, count: 84 },
+  { city: "Cairo", country: "Egypt", x: 65, y: 18, count: 53 },
+  { city: "Casablanca", country: "Morocco", x: 38, y: 15, count: 31 },
+  { city: "Dar es Salaam", country: "Tanzania", x: 72, y: 65, count: 29 },
+  { city: "Kigali", country: "Rwanda", x: 68, y: 58, count: 24 },
 ]
 
 export function AfricaMap() {
@@ -25,6 +27,8 @@ export function AfricaMap() {
     return () => clearInterval(interval)
   }, [])
 
+  const activeLocation = activePoint !== null ? signupLocations[activePoint] : null
+
   return (
     <section className="py-20 lg:py-28 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
@@ -36,27 +40,27 @@ export function AfricaMap() {
           <p className="text-muted-foreground max-w-md mx-auto">
             Businesses across the continent are joining the waitlist
           </p>
+
+          <div className="h-16 mt-6 flex items-center justify-center">
+            {activeLocation ? (
+              <div className="animate-in fade-in zoom-in duration-200 flex flex-col items-center">
+                <p className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
+                  {activeLocation.country}
+                </p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  {activeLocation.city} — {activeLocation.count} signups
+                </p>
+              </div>
+            ) : (
+              <p className="text-muted-foreground/50 text-sm italic">Hover on a point to see details</p>
+            )}
+          </div>
         </div>
 
         <div className="relative max-w-3xl mx-auto">
           {/* Map Container */}
           <div className="relative aspect-square max-w-lg mx-auto">
-            {/* Africa silhouette (simplified) */}
-            <svg viewBox="0 0 100 100" className="w-full h-full">
-              <defs>
-                <linearGradient id="africaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="rgba(127, 127, 127, 0.1)" />
-                  <stop offset="100%" stopColor="rgba(127, 127, 127, 0.05)" />
-                </linearGradient>
-              </defs>
-              {/* Simplified Africa outline */}
-              <path
-                d="M45 10 L55 8 L62 12 L68 15 L70 22 L65 28 L68 35 L72 42 L75 50 L72 58 L68 65 L62 72 L55 78 L48 82 L42 80 L38 75 L35 68 L32 60 L28 52 L25 45 L28 38 L32 32 L35 25 L38 18 L42 12 Z"
-                fill="url(#africaGradient)"
-                stroke="rgba(127, 127, 127, 0.2)"
-                strokeWidth="0.5"
-              />
-            </svg>
+            <Image src="/images/africa-vector.png" alt="Map of Africa" fill className="object-contain opacity-40" />
 
             {/* Signup points */}
             {signupLocations.map((location, index) => (
@@ -79,39 +83,29 @@ export function AfricaMap() {
                   }}
                 />
 
-                {/* Point */}
+                {/* Point - enhanced scale on hover */}
                 <div
                   className={`relative w-3 h-3 rounded-full transition-all duration-300 ${
-                    activePoint === index || pulseIndex === index
-                      ? "bg-gradient-to-r from-red-500 to-red-600 scale-150"
-                      : "bg-red-500/70"
+                    activePoint === index
+                      ? "bg-gradient-to-r from-red-500 to-red-600 scale-[2] shadow-lg shadow-red-500/50"
+                      : pulseIndex === index
+                        ? "bg-gradient-to-r from-red-500 to-red-600 scale-150"
+                        : "bg-red-500/70"
                   }`}
                 >
                   <div className="absolute inset-0 rounded-full bg-red-500 animate-pulse opacity-50" />
                 </div>
-
-                {/* Tooltip */}
-                {activePoint === index && (
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-3 py-2 rounded-lg bg-card border border-border shadow-lg whitespace-nowrap z-10">
-                    <p className="text-sm font-medium text-foreground">
-                      {location.city}, {location.country}
-                    </p>
-                    <p className="text-xs text-muted-foreground">{location.count} signups</p>
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-card" />
-                  </div>
-                )}
               </div>
             ))}
           </div>
 
-          {/* Stats bar */}
           <div className="mt-8 flex items-center justify-center gap-6 flex-wrap">
             <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 border border-border">
               <MapPin className="w-4 h-4 text-red-500" />
-              <span className="text-sm text-foreground font-medium">8 countries</span>
+              <span className="text-sm text-foreground font-medium">9 countries</span>
             </div>
             <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 border border-border">
-              <span className="text-sm text-foreground font-medium">527+ businesses</span>
+              <span className="text-sm text-foreground font-medium">572+ businesses</span>
             </div>
             <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-red-500/10 to-red-600/10 border border-red-500/20">
               <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
