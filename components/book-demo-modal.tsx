@@ -1,5 +1,7 @@
 "use client"
 
+import type React from "react"
+
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -58,11 +60,9 @@ export function BookDemoModal({ isOpen, onClose, onDemoBooked }: BookDemoModalPr
   const [copied, setCopied] = useState(false)
   const [currentMonth, setCurrentMonth] = useState(new Date())
 
-  // Generate referral code
   const referralCode = `FUNDI-${formData.fullName.split(" ")[0]?.toUpperCase() || "USER"}-${Math.random().toString(36).substring(2, 6).toUpperCase()}`
   const referralLink = `https://fundi.ai/join?ref=${referralCode}`
 
-  // Reset state when modal closes
   useEffect(() => {
     if (!isOpen) {
       setTimeout(() => {
@@ -107,7 +107,6 @@ export function BookDemoModal({ isOpen, onClose, onDemoBooked }: BookDemoModalPr
       if (onDemoBooked) {
         onDemoBooked()
       }
-      // Store verification in localStorage
       localStorage.setItem("fundi_referral_verified", "true")
       localStorage.setItem(
         "fundi_referral_user",
@@ -130,7 +129,6 @@ export function BookDemoModal({ isOpen, onClose, onDemoBooked }: BookDemoModalPr
     setTimeout(() => setCopied(false), 2000)
   }
 
-  // Calendar helpers
   const getDaysInMonth = (date: Date) => {
     const year = date.getFullYear()
     const month = date.getMonth()
@@ -155,31 +153,33 @@ export function BookDemoModal({ isOpen, onClose, onDemoBooked }: BookDemoModalPr
 
   if (!isOpen) return null
 
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      onClose()
+    }
+  }
+
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-      {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={step === 3 ? onClose : undefined} />
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 animate-in fade-in duration-200"
+      onClick={handleBackdropClick}
+    >
+      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={onClose} />
 
-      {/* Modal */}
       <div className="relative w-full max-w-5xl max-h-[90vh] overflow-hidden rounded-2xl bg-background border border-border shadow-2xl flex flex-col lg:flex-row animate-in zoom-in-95 duration-300">
-        {/* Close button - only after success */}
-        {step === 3 && (
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 z-10 p-2 rounded-full bg-secondary/80 hover:bg-secondary text-foreground transition-colors"
-          >
-            <X className="w-5 h-5" />
-          </button>
-        )}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-secondary/80 hover:bg-secondary text-foreground transition-colors"
+        >
+          <X className="w-5 h-5" />
+        </button>
 
-        {/* Left Panel - Information */}
+        {/* Left Panel */}
         <div className="lg:w-2/5 bg-gradient-to-br from-black via-zinc-900 to-black p-8 lg:p-10 flex flex-col justify-between relative overflow-hidden">
-          {/* Background decoration */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-red-500/20 to-transparent rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-red-600/10 to-transparent rounded-full blur-2xl" />
 
           <div className="relative z-10">
-            {/* Logo */}
             <div className="flex items-center gap-3 mb-8">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
                 <span className="text-white font-bold text-lg">F</span>
@@ -187,13 +187,11 @@ export function BookDemoModal({ isOpen, onClose, onDemoBooked }: BookDemoModalPr
               <span className="font-semibold text-2xl text-white tracking-tight">Fundi</span>
             </div>
 
-            {/* Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 mb-6">
               <Sparkles className="w-4 h-4 text-red-400" />
               <span className="text-sm text-red-300 font-medium">Early Access Program</span>
             </div>
 
-            {/* Headline */}
             <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
               Unlock Your{" "}
               <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
@@ -201,172 +199,147 @@ export function BookDemoModal({ isOpen, onClose, onDemoBooked }: BookDemoModalPr
               </span>
             </h2>
 
-            <p className="text-zinc-400 text-base leading-relaxed mb-8">
-              Join the exclusive group of African SMEs transforming their financial operations with AI-powered insights
-              — fully encrypted, completely private.
+            <p className="text-white/60 mb-8 leading-relaxed">
+              Join hundreds of African businesses already transforming their financial operations with AI that never
+              sees your data.
             </p>
 
-            {/* Features */}
             <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0">
-                  <Shield className="w-4 h-4 text-red-400" />
+              {[
+                { icon: Shield, text: "100% encrypted processing" },
+                { icon: Zap, text: "Reports in seconds, not days" },
+                { icon: Users, text: "Dedicated onboarding support" },
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-3 text-white/80">
+                  <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
+                    <item.icon className="w-4 h-4 text-red-400" />
+                  </div>
+                  <span className="text-sm">{item.text}</span>
                 </div>
-                <div>
-                  <h4 className="text-white font-medium text-sm">Zero-Knowledge Security</h4>
-                  <p className="text-zinc-500 text-xs">Your data is never seen, only analyzed</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0">
-                  <Zap className="w-4 h-4 text-red-400" />
-                </div>
-                <div>
-                  <h4 className="text-white font-medium text-sm">Instant Reports</h4>
-                  <p className="text-zinc-500 text-xs">Professional financial documents in seconds</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0">
-                  <Users className="w-4 h-4 text-red-400" />
-                </div>
-                <div>
-                  <h4 className="text-white font-medium text-sm">Founder-First Design</h4>
-                  <p className="text-zinc-500 text-xs">Built for African SMEs and startups</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
-          {/* Image/Illustration area */}
-          <div className="relative mt-8 rounded-xl overflow-hidden border border-zinc-800 bg-zinc-900/50">
-            <img
-              src="/futuristic-dashboard-with-charts-and-encrypted-dat.jpg"
-              alt="Fundi Dashboard Preview"
-              className="w-full h-40 object-cover opacity-80"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            <div className="absolute bottom-3 left-3 right-3">
-              <p className="text-xs text-zinc-400">Preview of your encrypted dashboard</p>
+          <div className="relative z-10 mt-8">
+            <div className="aspect-video rounded-xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 overflow-hidden">
+              <img
+                src="/futuristic-dashboard-with-charts-and-encrypted-dat.jpg"
+                alt="Fundi Dashboard Preview"
+                className="w-full h-full object-cover opacity-80"
+              />
             </div>
           </div>
         </div>
 
-        {/* Right Panel - Interactive Flow */}
-        <div className="lg:w-3/5 p-8 lg:p-10 overflow-y-auto max-h-[70vh] lg:max-h-none">
+        {/* Right Panel */}
+        <div className="lg:w-3/5 p-8 lg:p-10 overflow-y-auto">
           {/* Progress indicator */}
           <div className="flex items-center gap-2 mb-8">
             {[1, 2, 3].map((s) => (
               <div key={s} className="flex items-center gap-2">
                 <div
                   className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-all ${
-                    s < step
+                    step >= s
                       ? "bg-gradient-to-r from-red-500 to-red-600 text-white"
-                      : s === step
-                        ? "bg-gradient-to-r from-red-500 to-red-600 text-white ring-4 ring-red-500/20"
-                        : "bg-secondary text-muted-foreground"
+                      : "bg-secondary text-muted-foreground"
                   }`}
                 >
-                  {s < step ? <Check className="w-4 h-4" /> : s}
+                  {step > s ? <Check className="w-4 h-4" /> : s}
                 </div>
-                {s < 3 && <div className={`w-12 h-0.5 ${s < step ? "bg-red-500" : "bg-secondary"}`} />}
+                {s < 3 && <div className={`w-12 h-0.5 ${step > s ? "bg-red-500" : "bg-border"}`} />}
               </div>
             ))}
           </div>
 
-          {/* Step 1: User Information */}
+          {/* Step 1: User Info */}
           {step === 1 && (
-            <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
-              <div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">Tell us about you</h3>
-                <p className="text-muted-foreground">We will personalize your demo experience</p>
-              </div>
+            <div className="animate-in fade-in slide-in-from-right-4 duration-300">
+              <h3 className="text-2xl font-bold text-foreground mb-2">Tell us about yourself</h3>
+              <p className="text-muted-foreground mb-8">We'll personalize your demo experience</p>
 
-              <div className="space-y-4">
+              <div className="space-y-5">
                 <div>
-                  <Label htmlFor="fullName" className="text-sm font-medium">
+                  <Label htmlFor="fullName" className="text-foreground">
                     Full Name
                   </Label>
                   <Input
                     id="fullName"
-                    placeholder="John Doe"
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                    placeholder="John Doe"
                     className={`mt-1.5 bg-secondary/50 border-border ${errors.fullName ? "border-red-500" : ""}`}
                   />
-                  {errors.fullName && <p className="text-red-500 text-xs mt-1">{errors.fullName}</p>}
+                  {errors.fullName && <p className="text-xs text-red-500 mt-1">{errors.fullName}</p>}
                 </div>
 
                 <div>
-                  <Label htmlFor="email" className="text-sm font-medium">
-                    Email Address
+                  <Label htmlFor="email" className="text-foreground">
+                    Email
                   </Label>
                   <Input
                     id="email"
                     type="email"
-                    placeholder="john@company.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    placeholder="john@company.com"
                     className={`mt-1.5 bg-secondary/50 border-border ${errors.email ? "border-red-500" : ""}`}
                   />
-                  {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+                  {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email}</p>}
                 </div>
 
                 <div>
-                  <Label htmlFor="country" className="text-sm font-medium">
+                  <Label htmlFor="country" className="text-foreground">
                     Country
                   </Label>
                   <select
                     id="country"
                     value={formData.country}
                     onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                    className={`mt-1.5 w-full h-10 px-3 rounded-md bg-secondary/50 border border-border text-foreground text-sm ${errors.country ? "border-red-500" : ""}`}
+                    className={`mt-1.5 w-full px-3 py-2 rounded-md bg-secondary/50 border text-foreground ${errors.country ? "border-red-500" : "border-border"}`}
                   >
-                    <option value="">Select your country</option>
-                    {countries.map((country) => (
-                      <option key={country} value={country}>
-                        {country}
+                    <option value="">Select country</option>
+                    {countries.map((c) => (
+                      <option key={c} value={c}>
+                        {c}
                       </option>
                     ))}
                   </select>
-                  {errors.country && <p className="text-red-500 text-xs mt-1">{errors.country}</p>}
+                  {errors.country && <p className="text-xs text-red-500 mt-1">{errors.country}</p>}
                 </div>
 
                 <div>
-                  <Label htmlFor="organization" className="text-sm font-medium">
-                    Organization / Startup Name
+                  <Label htmlFor="organization" className="text-foreground">
+                    Organization
                   </Label>
                   <Input
                     id="organization"
-                    placeholder="Acme Inc."
                     value={formData.organization}
                     onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
+                    placeholder="Company name"
                     className={`mt-1.5 bg-secondary/50 border-border ${errors.organization ? "border-red-500" : ""}`}
                   />
-                  {errors.organization && <p className="text-red-500 text-xs mt-1">{errors.organization}</p>}
+                  {errors.organization && <p className="text-xs text-red-500 mt-1">{errors.organization}</p>}
                 </div>
               </div>
 
               <Button
                 onClick={handleNext}
-                className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white py-6"
+                className="w-full mt-8 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white py-6"
               >
-                Next
-                <ArrowRight className="ml-2 w-4 h-4" />
+                Continue
+                <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>
           )}
 
-          {/* Step 2: Choose Demo Date */}
+          {/* Step 2: Calendar */}
           {step === 2 && (
-            <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
-              <div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">Schedule your demo</h3>
-                <p className="text-muted-foreground">Pick a date and time that works for you</p>
-              </div>
+            <div className="animate-in fade-in slide-in-from-right-4 duration-300">
+              <h3 className="text-2xl font-bold text-foreground mb-2">Pick a time</h3>
+              <p className="text-muted-foreground mb-8">Select a date and time for your demo</p>
 
               {/* Calendar */}
-              <div className="bg-secondary/30 rounded-xl p-4 border border-border">
+              <div className="border border-border rounded-xl p-4 mb-6">
                 <div className="flex items-center justify-between mb-4">
                   <button
                     onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1))}
@@ -374,9 +347,9 @@ export function BookDemoModal({ isOpen, onClose, onDemoBooked }: BookDemoModalPr
                   >
                     <ArrowLeft className="w-4 h-4" />
                   </button>
-                  <h4 className="font-semibold">
-                    {currentMonth.toLocaleString("default", { month: "long", year: "numeric" })}
-                  </h4>
+                  <span className="font-medium text-foreground">
+                    {currentMonth.toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+                  </span>
                   <button
                     onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1))}
                     className="p-2 hover:bg-secondary rounded-lg transition-colors"
@@ -387,7 +360,7 @@ export function BookDemoModal({ isOpen, onClose, onDemoBooked }: BookDemoModalPr
 
                 <div className="grid grid-cols-7 gap-1 mb-2">
                   {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
-                    <div key={day} className="text-center text-xs text-muted-foreground font-medium py-2">
+                    <div key={day} className="text-center text-xs text-muted-foreground py-2">
                       {day}
                     </div>
                   ))}
@@ -400,18 +373,18 @@ export function BookDemoModal({ isOpen, onClose, onDemoBooked }: BookDemoModalPr
                   {Array.from({ length: daysInMonth }).map((_, i) => {
                     const day = i + 1
                     const dateStr = formatDate(day)
+                    const isSelectable = isDateSelectable(day)
                     const isSelected = formData.selectedDate === dateStr
-                    const selectable = isDateSelectable(day)
 
                     return (
                       <button
                         key={day}
-                        disabled={!selectable}
-                        onClick={() => setFormData({ ...formData, selectedDate: dateStr })}
+                        onClick={() => isSelectable && setFormData({ ...formData, selectedDate: dateStr })}
+                        disabled={!isSelectable}
                         className={`p-2 text-sm rounded-lg transition-all ${
                           isSelected
                             ? "bg-gradient-to-r from-red-500 to-red-600 text-white"
-                            : selectable
+                            : isSelectable
                               ? "hover:bg-secondary text-foreground"
                               : "text-muted-foreground/30 cursor-not-allowed"
                         }`}
@@ -421,13 +394,12 @@ export function BookDemoModal({ isOpen, onClose, onDemoBooked }: BookDemoModalPr
                     )
                   })}
                 </div>
+                {errors.selectedDate && <p className="text-xs text-red-500 mt-2">{errors.selectedDate}</p>}
               </div>
-
-              {errors.selectedDate && <p className="text-red-500 text-xs">{errors.selectedDate}</p>}
 
               {/* Time slots */}
               <div>
-                <Label className="text-sm font-medium mb-3 block">Preferred Time (GMT+1)</Label>
+                <p className="text-sm font-medium text-foreground mb-3">Available times</p>
                 <div className="grid grid-cols-4 gap-2">
                   {timeSlots.map((time) => (
                     <button
@@ -435,28 +407,28 @@ export function BookDemoModal({ isOpen, onClose, onDemoBooked }: BookDemoModalPr
                       onClick={() => setFormData({ ...formData, selectedTime: time })}
                       className={`px-3 py-2 text-sm rounded-lg border transition-all ${
                         formData.selectedTime === time
-                          ? "bg-gradient-to-r from-red-500 to-red-600 text-white border-red-500"
-                          : "border-border hover:border-red-500/50 bg-secondary/30"
+                          ? "border-red-500 bg-red-500/10 text-red-400"
+                          : "border-border hover:border-muted-foreground text-muted-foreground"
                       }`}
                     >
                       {time}
                     </button>
                   ))}
                 </div>
-                {errors.selectedTime && <p className="text-red-500 text-xs mt-2">{errors.selectedTime}</p>}
+                {errors.selectedTime && <p className="text-xs text-red-500 mt-2">{errors.selectedTime}</p>}
               </div>
 
-              <div className="flex gap-3">
-                <Button onClick={handleBack} variant="outline" className="flex-1 py-6 bg-transparent">
-                  <ArrowLeft className="mr-2 w-4 h-4" />
+              <div className="flex gap-4 mt-8">
+                <Button variant="outline" onClick={handleBack} className="flex-1 py-6 bg-transparent">
+                  <ArrowLeft className="w-4 h-4 mr-2" />
                   Back
                 </Button>
                 <Button
                   onClick={handleNext}
                   className="flex-1 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white py-6"
                 >
-                  Confirm
-                  <Calendar className="ml-2 w-4 h-4" />
+                  Book Demo
+                  <Calendar className="w-4 h-4 ml-2" />
                 </Button>
               </div>
             </div>
@@ -464,105 +436,56 @@ export function BookDemoModal({ isOpen, onClose, onDemoBooked }: BookDemoModalPr
 
           {/* Step 3: Success + Referral */}
           {step === 3 && (
-            <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-300">
-              {/* Success message */}
-              <div className="text-center py-6">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-r from-red-500 to-red-600 flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle2 className="w-8 h-8 text-white" />
+            <div className="animate-in fade-in slide-in-from-right-4 duration-300">
+              <div className="text-center mb-8">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 flex items-center justify-center">
+                  <CheckCircle2 className="w-8 h-8 text-emerald-500" />
                 </div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">Your demo is booked!</h3>
-                <p className="text-muted-foreground">We are excited to show you what Fundi can do</p>
-              </div>
-
-              {/* Confirmation summary */}
-              <div className="bg-secondary/30 rounded-xl p-5 border border-border space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground text-sm">Name</span>
-                  <span className="text-foreground font-medium text-sm">{formData.fullName}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground text-sm">Email</span>
-                  <span className="text-foreground font-medium text-sm">{formData.email}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground text-sm">Date</span>
-                  <span className="text-foreground font-medium text-sm">
-                    {new Date(formData.selectedDate).toLocaleDateString("en-US", {
-                      weekday: "long",
-                      month: "long",
-                      day: "numeric",
-                    })}
-                  </span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground text-sm">Time</span>
-                  <span className="text-foreground font-medium text-sm">{formData.selectedTime}</span>
-                </div>
+                <h3 className="text-2xl font-bold text-foreground mb-2">Demo Booked!</h3>
+                <p className="text-muted-foreground">We've sent a confirmation to {formData.email}</p>
               </div>
 
               {/* Referral Module */}
-              <div className="bg-gradient-to-br from-zinc-900 to-black rounded-xl p-6 border border-zinc-800 relative overflow-hidden">
-                {/* Background glow */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/20 rounded-full blur-3xl" />
-
-                <div className="relative z-10">
-                  {/* Header */}
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500/20 to-red-600/20 flex items-center justify-center">
-                      <Gift className="w-5 h-5 text-red-400" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-white">Invite & Earn Early Credits</h4>
-                      <p className="text-zinc-400 text-xs">Share your link and earn early access rewards</p>
-                    </div>
+              <div className="p-6 rounded-2xl bg-gradient-to-br from-card via-card to-secondary/50 border border-border">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500/20 to-red-600/10 flex items-center justify-center">
+                    <Gift className="w-5 h-5 text-red-400" />
                   </div>
-
-                  {/* Progress bar */}
-                  <div className="mb-5">
-                    <div className="flex justify-between text-xs mb-2">
-                      <span className="text-zinc-400">Your earnings</span>
-                      <span className="text-white font-medium">$0 / $200</span>
-                    </div>
-                    <div className="h-2 bg-zinc-800 rounded-full overflow-hidden">
-                      <div className="h-full w-0 bg-gradient-to-r from-red-500 to-red-600 rounded-full transition-all" />
-                    </div>
+                  <div>
+                    <h4 className="font-semibold text-foreground">Earn Rewards</h4>
+                    <p className="text-sm text-muted-foreground">Share Fundi with your network</p>
                   </div>
+                </div>
 
-                  {/* Referral link */}
-                  <div className="flex gap-2 mb-4">
-                    <div className="flex-1 bg-zinc-800/50 rounded-lg px-4 py-3 border border-zinc-700">
-                      <p className="text-xs text-zinc-500 mb-1">Your unique referral link</p>
-                      <p className="text-white text-sm truncate font-mono">{referralLink}</p>
-                    </div>
-                    <Button
-                      onClick={copyReferralLink}
-                      className={`px-4 ${copied ? "bg-green-600 hover:bg-green-600" : "bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700"} text-white`}
-                    >
-                      {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2 p-3 rounded-lg bg-secondary/50 border border-border">
+                    <input
+                      type="text"
+                      value={referralLink}
+                      readOnly
+                      className="flex-1 bg-transparent text-sm text-foreground outline-none"
+                    />
+                    <Button size="sm" variant="ghost" onClick={copyReferralLink} className="shrink-0">
+                      {copied ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
                     </Button>
                   </div>
 
-                  {/* Reward rules */}
-                  <div className="grid grid-cols-2 gap-3 mb-4">
-                    <div className="bg-zinc-800/30 rounded-lg p-3 border border-zinc-700/50">
-                      <p className="text-lg font-bold text-white">$5</p>
-                      <p className="text-xs text-zinc-400">Per signup</p>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="p-3 rounded-lg bg-secondary/30 border border-border">
+                      <p className="text-2xl font-bold text-foreground">$5</p>
+                      <p className="text-xs text-muted-foreground">per signup</p>
                     </div>
-                    <div className="bg-zinc-800/30 rounded-lg p-3 border border-zinc-700/50">
-                      <p className="text-lg font-bold text-white">$20</p>
-                      <p className="text-xs text-zinc-400">Per subscription</p>
+                    <div className="p-3 rounded-lg bg-secondary/30 border border-border">
+                      <p className="text-2xl font-bold text-foreground">$20</p>
+                      <p className="text-xs text-muted-foreground">per subscription</p>
                     </div>
                   </div>
-
-                  <p className="text-xs text-zinc-500 text-center">
-                    Earn credits when friends sign up ($5) or subscribe ($20). Max $200 in early credits.
-                  </p>
                 </div>
               </div>
 
               <Button
                 onClick={onClose}
-                className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white py-6"
+                className="w-full mt-6 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white py-6"
               >
                 Done
               </Button>

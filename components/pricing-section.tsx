@@ -1,8 +1,11 @@
 "use client"
 
 import { useState } from "react"
-import { Check, Sparkles, Rocket, Globe, Eye, Target, Crown } from "lucide-react"
+import { Check, Sparkles, Rocket, Globe, Eye, Target, Crown, X, Zap, Shield, Users, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useI18n } from "@/lib/i18n"
+
+// ... existing code for plans ...
 
 const smeePlans = [
   {
@@ -118,11 +121,117 @@ const investorPlans = [
   },
 ]
 
-function PricingCard({
+function PreOrderModal({
+  isOpen,
+  onClose,
   plan,
 }: {
-  plan: (typeof smeePlans)[0]
+  isOpen: boolean
+  onClose: () => void
+  plan: (typeof smeePlans)[0] | null
 }) {
+  const { t } = useI18n()
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSuccess, setIsSuccess] = useState(false)
+
+  if (!isOpen || !plan) return null
+
+  const handlePreOrder = async () => {
+    setIsSubmitting(true)
+    await new Promise((resolve) => setTimeout(resolve, 1500))
+    setIsSubmitting(false)
+    setIsSuccess(true)
+  }
+
+  const Icon = plan.icon
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose()
+      }}
+    >
+      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={onClose} />
+      <div className="relative w-full max-w-md bg-card border border-border rounded-2xl p-6 animate-in fade-in zoom-in duration-300">
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 p-2 rounded-full hover:bg-secondary transition-colors"
+        >
+          <X className="w-5 h-5 text-muted-foreground" />
+        </button>
+
+        {isSuccess ? (
+          <div className="text-center py-8 animate-in fade-in zoom-in">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 flex items-center justify-center">
+              <Check className="w-8 h-8 text-emerald-500" />
+            </div>
+            <h3 className="text-xl font-bold text-foreground mb-2">Pre-Order Confirmed!</h3>
+            <p className="text-muted-foreground text-sm">
+              You've secured your spot for {plan.name}. We'll notify you at launch!
+            </p>
+          </div>
+        ) : (
+          <>
+            <div className="text-center mb-6">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-gradient-to-br from-red-500/20 to-red-600/10 flex items-center justify-center">
+                <Icon className="w-7 h-7 text-red-400" />
+              </div>
+              <h3 className="text-xl font-bold text-foreground">{t("preOrderTitle")}</h3>
+              <p className="text-sm text-muted-foreground mt-1">
+                {plan.name} — {plan.price}
+                {plan.period}
+              </p>
+            </div>
+
+            <p className="text-sm text-muted-foreground text-center mb-6">{t("preOrderDesc")}</p>
+
+            <div className="p-4 rounded-xl bg-secondary/50 border border-border mb-6">
+              <p className="text-sm font-medium text-foreground mb-3">{t("preOrderBenefits")}</p>
+              <ul className="space-y-2">
+                {[t("preOrderBenefit1"), t("preOrderBenefit2"), t("preOrderBenefit3"), t("preOrderBenefit4")].map(
+                  (benefit, i) => (
+                    <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <div className="w-5 h-5 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                        {i === 0 ? (
+                          <Zap className="w-3 h-3 text-red-400" />
+                        ) : i === 1 ? (
+                          <Star className="w-3 h-3 text-red-400" />
+                        ) : i === 2 ? (
+                          <Shield className="w-3 h-3 text-red-400" />
+                        ) : (
+                          <Users className="w-3 h-3 text-red-400" />
+                        )}
+                      </div>
+                      {benefit}
+                    </li>
+                  ),
+                )}
+              </ul>
+            </div>
+
+            <Button
+              onClick={handlePreOrder}
+              disabled={isSubmitting}
+              className="w-full bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white py-6"
+            >
+              {isSubmitting ? "Processing..." : t("confirmPreOrder")}
+            </Button>
+          </>
+        )}
+      </div>
+    </div>
+  )
+}
+
+function PricingCard({
+  plan,
+  onPreOrder,
+}: {
+  plan: (typeof smeePlans)[0]
+  onPreOrder: (plan: (typeof smeePlans)[0]) => void
+}) {
+  const { t } = useI18n()
   const Icon = plan.icon
 
   return (
@@ -133,19 +242,17 @@ function PricingCard({
           : "border-white/10 bg-white/[0.02] hover:border-white/20"
       } backdrop-blur-xl p-8`}
     >
-      {/* Premium glow effect */}
       {plan.popular && (
         <>
           <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-red-500/20 via-transparent to-red-500/10 -z-10" />
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <span className="px-4 py-1.5 text-xs font-semibold bg-gradient-to-r from-red-600 to-red-500 text-white rounded-full">
-              MOST POPULAR
+              {t("mostPopular")}
             </span>
           </div>
         </>
       )}
 
-      {/* Header */}
       <div className="mb-6">
         <div
           className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 ${
@@ -160,7 +267,6 @@ function PricingCard({
         <p className="text-sm text-muted-foreground leading-relaxed">{plan.description}</p>
       </div>
 
-      {/* Price */}
       <div className="mb-6">
         <div className="flex items-baseline gap-1">
           <span
@@ -176,7 +282,6 @@ function PricingCard({
         </div>
       </div>
 
-      {/* Features */}
       <ul className="space-y-3 mb-8 flex-1">
         {plan.features.map((feature, index) => (
           <li key={index} className="flex items-start gap-3 text-sm">
@@ -192,18 +297,17 @@ function PricingCard({
         ))}
       </ul>
 
-      {/* Tagline */}
       <p className="text-xs text-muted-foreground/70 italic mb-6 border-t border-white/5 pt-4">"{plan.tagline}"</p>
 
-      {/* CTA */}
       <Button
+        onClick={() => onPreOrder(plan)}
         className={`w-full py-6 font-semibold transition-all duration-300 ${
           plan.popular
             ? "bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white shadow-lg shadow-red-500/25"
             : "bg-white/5 hover:bg-white/10 text-foreground border border-white/10"
         }`}
       >
-        Get Started
+        {t("preOrderNow")}
       </Button>
     </div>
   )
@@ -211,28 +315,34 @@ function PricingCard({
 
 export function PricingSection() {
   const [activeTab, setActiveTab] = useState<"startups" | "investors">("startups")
+  const [preOrderModal, setPreOrderModal] = useState<{ isOpen: boolean; plan: (typeof smeePlans)[0] | null }>({
+    isOpen: false,
+    plan: null,
+  })
+  const { t } = useI18n()
+
+  const handlePreOrder = (plan: (typeof smeePlans)[0]) => {
+    setPreOrderModal({ isOpen: true, plan })
+  }
 
   return (
-    <section className="py-24 lg:py-32 bg-background relative overflow-hidden">
-      {/* Background elements */}
+    <section id="pricing" className="py-24 lg:py-32 bg-background relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-red-500/[0.03] rounded-full blur-[120px]" />
         <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-white/[0.02] rounded-full blur-[100px]" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">
-            Simple, transparent{" "}
-            <span className="bg-gradient-to-r from-red-500 to-red-400 bg-clip-text text-transparent">pricing</span>
+            {t("pricingTitle")}{" "}
+            <span className="bg-gradient-to-r from-red-500 to-red-400 bg-clip-text text-transparent">
+              {t("pricingHighlight")}
+            </span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Choose the plan that fits your ambition. Scale up anytime as your journey evolves.
-          </p>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{t("pricingSubtitle")}</p>
         </div>
 
-        {/* Toggle */}
         <div className="flex justify-center mb-12">
           <div className="inline-flex items-center p-1.5 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-xl">
             <button
@@ -243,7 +353,7 @@ export function PricingSection() {
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              Startups & SMEs
+              {t("startupsSmEs")}
             </button>
             <button
               onClick={() => setActiveTab("investors")}
@@ -253,19 +363,18 @@ export function PricingSection() {
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              Investors
+              {t("investors")}
             </button>
           </div>
         </div>
 
-        {/* Pricing Cards */}
         <div
           className={`grid md:grid-cols-3 gap-8 transition-opacity duration-300 ${
             activeTab === "startups" ? "opacity-100" : "opacity-0 hidden"
           }`}
         >
           {smeePlans.map((plan) => (
-            <PricingCard key={plan.name} plan={plan} />
+            <PricingCard key={plan.name} plan={plan} onPreOrder={handlePreOrder} />
           ))}
         </div>
 
@@ -275,21 +384,26 @@ export function PricingSection() {
           }`}
         >
           {investorPlans.map((plan) => (
-            <PricingCard key={plan.name} plan={plan} />
+            <PricingCard key={plan.name} plan={plan} onPreOrder={handlePreOrder} />
           ))}
         </div>
 
-        {/* Bottom CTA */}
         <div className="text-center mt-16 pt-12 border-t border-white/5">
-          <p className="text-muted-foreground mb-4">Need a custom solution for your organization?</p>
+          <p className="text-muted-foreground mb-4">{t("customSolution")}</p>
           <Button
             variant="outline"
             className="border-white/20 hover:bg-white/5 text-foreground px-8 py-6 bg-transparent"
           >
-            Contact Sales
+            {t("contactSales")}
           </Button>
         </div>
       </div>
+
+      <PreOrderModal
+        isOpen={preOrderModal.isOpen}
+        onClose={() => setPreOrderModal({ isOpen: false, plan: null })}
+        plan={preOrderModal.plan}
+      />
     </section>
   )
 }

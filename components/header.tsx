@@ -6,12 +6,14 @@ import { Button } from "@/components/ui/button"
 import { Menu, X, Gift } from "lucide-react"
 import { BookDemoModal } from "@/components/book-demo-modal"
 import { ReferEarnModal } from "@/components/refer-earn-modal"
+import { useI18n, LanguageToggle } from "@/lib/i18n"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [demoModalOpen, setDemoModalOpen] = useState(false)
   const [referModalOpen, setReferModalOpen] = useState(false)
   const [isAutoVerified, setIsAutoVerified] = useState(false)
+  const { t } = useI18n()
 
   const handleDemoBooked = () => {
     setIsAutoVerified(true)
@@ -31,41 +33,45 @@ export function Header() {
 
             <nav className="hidden md:flex items-center gap-8">
               <Link href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Features
+                {t("features")}
               </Link>
               <Link
                 href="#how-it-works"
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                How it Works
+                {t("howItWorks")}
               </Link>
               <Link href="#security" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Security
+                {t("security")}
               </Link>
               <Link
                 href="/marketplace"
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                Marketplace
+                {t("marketplace")}
+              </Link>
+              <Link href="/talent" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                {t("talent")}
               </Link>
               <Link href="/blog" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Blog
+                {t("blog")}
               </Link>
               <Link href="#pricing" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Pricing
+                {t("pricing")}
               </Link>
             </nav>
 
-            <div className="hidden md:flex items-center gap-4">
+            <div className="hidden md:flex items-center gap-3">
+              <LanguageToggle />
               <Button variant="ghost" className="text-sm gap-2" onClick={() => setReferModalOpen(true)}>
                 <Gift className="w-4 h-4 text-red-500" />
-                Refer & Earn
+                {t("referEarn")}
               </Button>
               <Button
                 onClick={() => setDemoModalOpen(true)}
                 className="text-sm bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white border-0"
               >
-                Book a Demo
+                {t("bookDemo")}
               </Button>
             </div>
 
@@ -78,29 +84,35 @@ export function Header() {
         {mobileMenuOpen && (
           <div className="md:hidden bg-background border-b border-border">
             <nav className="flex flex-col px-6 py-4 gap-4">
+              <div className="flex justify-center pb-2">
+                <LanguageToggle />
+              </div>
               <Link href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Features
+                {t("features")}
               </Link>
               <Link
                 href="#how-it-works"
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                How it Works
+                {t("howItWorks")}
               </Link>
               <Link href="#security" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Security
+                {t("security")}
               </Link>
               <Link
                 href="/marketplace"
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                Marketplace
+                {t("marketplace")}
+              </Link>
+              <Link href="/talent" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                {t("talent")}
               </Link>
               <Link href="/blog" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Blog
+                {t("blog")}
               </Link>
               <Link href="#pricing" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Pricing
+                {t("pricing")}
               </Link>
               <div className="flex flex-col gap-2 pt-4 border-t border-border">
                 <Button
@@ -112,7 +124,7 @@ export function Header() {
                   }}
                 >
                   <Gift className="w-4 h-4 text-red-500" />
-                  Refer & Earn
+                  {t("referEarn")}
                 </Button>
                 <Button
                   onClick={() => {
@@ -121,7 +133,7 @@ export function Header() {
                   }}
                   className="bg-gradient-to-r from-red-500 to-red-600 text-white border-0"
                 >
-                  Book a Demo
+                  {t("bookDemo")}
                 </Button>
               </div>
             </nav>

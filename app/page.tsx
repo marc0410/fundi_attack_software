@@ -11,8 +11,9 @@ import { PricingSection } from "@/components/pricing-section"
 import { InsightPulse } from "@/components/insight-pulse"
 import { WhyNowSection } from "@/components/why-now-section"
 import { BlogPreview } from "@/components/blog-preview"
-import { AfricaMap } from "@/components/africa-map"
+import { CountryCarousel } from "@/components/country-carousel"
 import { SecuritySection } from "@/components/security-section"
+import { FAQSection } from "@/components/faq-section"
 import { CTASection } from "@/components/cta-section"
 import { BetaAnnouncement } from "@/components/beta-announcement"
 import { Footer } from "@/components/footer"
@@ -33,8 +34,9 @@ export default function Home() {
       <InsightPulse />
       <WhyNowSection />
       <BlogPreview />
-      <AfricaMap />
+      <CountryCarousel />
       <SecuritySection />
+      <FAQSection />
       <CTASection />
       <BetaAnnouncement />
       <Footer />

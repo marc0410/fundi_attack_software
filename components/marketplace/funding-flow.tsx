@@ -72,7 +72,6 @@ export function FundingFlow() {
           </p>
         </div>
 
-        {/* Funding Instruments Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {fundingInstruments.map((instrument, index) => (
             <div
@@ -95,7 +94,6 @@ export function FundingFlow() {
             </div>
           ))}
 
-          {/* Smart Compliance Card */}
           <div className="bg-gradient-to-br from-red-500/10 to-red-600/5 border border-red-500/20 rounded-2xl p-6">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500/20 to-red-600/20 flex items-center justify-center border border-red-500/30 mb-4">
               <Shield className="w-6 h-6 text-red-400" />
@@ -115,7 +113,6 @@ export function FundingFlow() {
           </div>
         </div>
 
-        {/* Quick Fund CTA */}
         <div className="bg-white/[0.02] border border-white/10 rounded-2xl p-8 lg:p-12">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="flex items-center gap-6">
@@ -124,7 +121,7 @@ export function FundingFlow() {
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-white mb-2">Fund in 30 Seconds</h3>
-                <p className="text-white/60">Connect wallet. Choose instrument. Verify proofs. Done.</p>
+                <p className="text-white/60">Sign in. Choose instrument. Verify proofs. Done.</p>
               </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">

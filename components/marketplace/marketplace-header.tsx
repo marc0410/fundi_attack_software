@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Wallet } from "lucide-react"
+import { Menu, X, LogIn } from "lucide-react"
 
 export function MarketplaceHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -39,8 +39,8 @@ export function MarketplaceHeader() {
 
           <div className="hidden md:flex items-center gap-4">
             <Button variant="ghost" className="text-sm text-white/80 hover:text-white hover:bg-white/10">
-              <Wallet className="w-4 h-4 mr-2" />
-              Connect Wallet
+              <LogIn className="w-4 h-4 mr-2" />
+              Sign In
             </Button>
             <Button className="text-sm bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white border-0">
               Start Investing
@@ -70,8 +70,8 @@ export function MarketplaceHeader() {
             </Link>
             <div className="flex flex-col gap-2 pt-4 border-t border-white/10">
               <Button variant="ghost" className="justify-start text-white/80">
-                <Wallet className="w-4 h-4 mr-2" />
-                Connect Wallet
+                <LogIn className="w-4 h-4 mr-2" />
+                Sign In
               </Button>
               <Button className="bg-gradient-to-r from-red-500 to-red-600 text-white border-0">Start Investing</Button>
             </div>
