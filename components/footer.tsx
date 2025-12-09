@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useI18n } from "@/lib/i18n"
-
+import Image from "next/image"
 export function Footer() {
   const { t } = useI18n()
 
@@ -38,12 +38,18 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12">
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
-                <span className="text-white font-bold text-sm">F</span>
-              </div>
-              <span className="font-semibold text-lg text-foreground">Fundi</span>
-            </Link>
+                        <Link href="/" className="flex items-center gap-2">
+  <div className="w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center">
+    <Image
+      src="/fundi.png"
+      alt="Fundi Logo"
+      width={32}    // correspond à w-8 (8*4=32px)
+      height={32}   // correspond à h-8
+      className="object-cover"
+    />
+  </div>
+  <span className="font-semibold text-xl text-foreground tracking-tight">Fvundi</span>
+</Link>
             <p className="text-sm text-muted-foreground leading-relaxed">{t("footerDesc")}</p>
           </div>
 
@@ -68,7 +74,7 @@ export function Footer() {
 
         <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Fundi. {t("allRightsReserved")}
+            © {new Date().getFullYear()} Fvundi. {t("allRightsReserved")}
           </p>
           <div className="flex items-center gap-6">
             <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">

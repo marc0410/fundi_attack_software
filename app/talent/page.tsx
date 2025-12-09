@@ -112,14 +112,14 @@ export default function TalentPage() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">
-              Fundi{" "}
+              Fvundi{" "}
               <span className="bg-gradient-to-r from-red-500 via-red-400 to-red-600 bg-clip-text text-transparent">
                 Talent
               </span>
             </h1>
 
             <p className="text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
-              Connecting Africa's brightest young minds with opportunities in the Fundi ecosystem. Your skills, your
+              Connecting Africa's brightest young minds with opportunities in the fvundi ecosystem. Your skills, your
               future, your continent.
             </p>
 
@@ -129,7 +129,7 @@ export default function TalentPage() {
                 onClick={() => setShowApplyModal(true)}
                 className="w-full sm:w-auto bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white border-0 px-8 py-6"
               >
-                Join Fundi Talent
+                Join fvundi Talent
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
               <Button
@@ -164,7 +164,7 @@ export default function TalentPage() {
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
               Why Join{" "}
               <span className="bg-gradient-to-r from-red-500 to-red-400 bg-clip-text text-transparent">
-                Fundi Talent?
+                fvundi Talent?
               </span>
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
@@ -289,7 +289,7 @@ export default function TalentPage() {
                 title: "Create Your Profile",
                 desc: "Sign up and showcase your skills, education, and aspirations.",
               },
-              { step: 2, title: "Get Verified", desc: "Complete skill assessments and get your Fundi Talent badge." },
+              { step: 2, title: "Get Verified", desc: "Complete skill assessments and get your fvundi Talent badge." },
               {
                 step: 3,
                 title: "Match with Opportunities",
@@ -334,7 +334,7 @@ export default function TalentPage() {
                 onClick={() => setShowApplyModal(true)}
                 className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white border-0 px-8 py-6"
               >
-                Apply to Fundi Talent
+                Apply to fvundi Talent
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </div>
@@ -561,7 +561,7 @@ function TalentApplyModal({ onClose }: { onClose: () => void }) {
                 />
               </div>
               <div>
-                <label className="text-sm font-medium text-foreground">Why do you want to join Fundi Talent?</label>
+                <label className="text-sm font-medium text-foreground">Why do you want to join fvundi Talent?</label>
                 <textarea
                   value={formData.motivation}
                   onChange={(e) => setFormData({ ...formData, motivation: e.target.value })}

@@ -53,10 +53,10 @@ export function ReferEarnModal({ isOpen, onClose }: ReferEarnModalProps) {
               />
             </div>
 
-            <h3 className="text-2xl font-bold text-foreground mb-4">Join the Fundi Early Community</h3>
+            <h3 className="text-2xl font-bold text-foreground mb-4">Join the fvundi Early Community</h3>
 
             <p className="text-muted-foreground leading-relaxed mb-6">
-              Join the Fundi early community and unlock exclusive perks, early access updates, and special launch
+              Join the fvundi early community and unlock exclusive perks, early access updates, and special launch
               rewards.
             </p>
 
@@ -64,7 +64,7 @@ export function ReferEarnModal({ isOpen, onClose }: ReferEarnModalProps) {
             <div className="space-y-3">
               {[
                 "Exclusive early access to new features",
-                "Direct connection with the Fundi team",
+                "Direct connection with the fvundi team",
                 "Special launch rewards for early members",
                 "Priority support and community insights",
               ].map((benefit, i) => (
@@ -148,7 +148,7 @@ export function ReferEarnModal({ isOpen, onClose }: ReferEarnModalProps) {
             {/* Description */}
             <p className="text-sm text-muted-foreground text-center leading-relaxed">
               When someone joins the community using the link you share, you both unlock early-bird perks and exclusive
-              Fundi launch benefits.
+              fvundi launch benefits.
             </p>
 
             {/* Hidden placeholder for future referral logic */}

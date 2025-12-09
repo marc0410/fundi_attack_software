@@ -470,7 +470,7 @@ export default function OnboardingPage() {
               <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 mb-8 flex items-start gap-3">
                 <Shield className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
                 <p className="text-sm text-emerald-300">
-                  All financial data is encrypted using homomorphic encryption. Fundi never sees your raw numbers.
+                  All financial data is encrypted using homomorphic encryption. fvundi never sees your raw numbers.
                 </p>
               </div>
 
@@ -759,7 +759,7 @@ export default function OnboardingPage() {
                     <div>
                       <p className="text-sm text-red-300 font-medium">By submitting, you agree to:</p>
                       <ul className="text-sm text-red-300/80 mt-2 space-y-1">
-                        <li>• Fundi's Terms of Service and Privacy Policy</li>
+                        <li>• Fvundi's Terms of Service and Privacy Policy</li>
                         <li>• Allow encrypted processing of your financial data</li>
                         <li>• Verification of submitted information</li>
                       </ul>

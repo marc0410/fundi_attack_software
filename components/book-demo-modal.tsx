@@ -224,7 +224,7 @@ export function BookDemoModal({ isOpen, onClose, onDemoBooked }: BookDemoModalPr
             <div className="aspect-video rounded-xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 overflow-hidden">
               <img
                 src="/futuristic-dashboard-with-charts-and-encrypted-dat.jpg"
-                alt="Fundi Dashboard Preview"
+                alt="fvundi Dashboard Preview"
                 className="w-full h-full object-cover opacity-80"
               />
             </div>
@@ -453,7 +453,7 @@ export function BookDemoModal({ isOpen, onClose, onDemoBooked }: BookDemoModalPr
                   </div>
                   <div>
                     <h4 className="font-semibold text-foreground">Earn Rewards</h4>
-                    <p className="text-sm text-muted-foreground">Share Fundi with your network</p>
+                    <p className="text-sm text-muted-foreground">Share fvundi with your network</p>
                   </div>
                 </div>
 

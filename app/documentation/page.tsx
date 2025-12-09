@@ -7,13 +7,13 @@ const docSections = [
   {
     icon: Zap,
     title: "Getting Started",
-    description: "Quick start guide to set up your Fundi account and connect your first data source.",
+    description: "Quick start guide to set up your fvundi account and connect your first data source.",
     links: ["Installation", "Quick Start", "First Report"],
   },
   {
     icon: Code,
     title: "API Reference",
-    description: "Complete API documentation for developers integrating Fundi into their workflows.",
+    description: "Complete API documentation for developers integrating fvundi into their workflows.",
     links: ["Authentication", "Endpoints", "Webhooks"],
   },
   {
@@ -43,10 +43,10 @@ export default function DocumentationPage() {
               <span className="text-sm text-muted-foreground">Documentation</span>
             </div>
             <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
-              Fundi <span className="bg-gradient-to-r from-red-500 to-red-400 bg-clip-text text-transparent">Docs</span>
+              fvundi <span className="bg-gradient-to-r from-red-500 to-red-400 bg-clip-text text-transparent">Docs</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Everything you need to integrate, customize, and maximize your Fundi experience.
+              Everything you need to integrate, customize, and maximize your fvundi experience.
             </p>
           </div>
 

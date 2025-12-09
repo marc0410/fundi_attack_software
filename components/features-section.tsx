@@ -48,7 +48,7 @@ export function FeaturesSection() {
               Everything you need to understand your finances
             </h2>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              From daily bookkeeping to investor presentations, Fundi handles the complexity so you can focus on growing
+              From daily bookkeeping to investor presentations, fvundi handles the complexity so you can focus on growing
               your business.
             </p>
 

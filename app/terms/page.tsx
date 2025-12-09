@@ -23,7 +23,7 @@ export default function TermsPage() {
               <section>
                 <h2 className="text-xl font-semibold text-foreground mb-4">1. Acceptance of Terms</h2>
                 <p>
-                  By accessing and using Fundi's services, you agree to be bound by these Terms and Conditions. If you
+                  By accessing and using Fvundi's services, you agree to be bound by these Terms and Conditions. If you
                   do not agree to these terms, please do not use our services.
                 </p>
               </section>
@@ -31,7 +31,7 @@ export default function TermsPage() {
               <section>
                 <h2 className="text-xl font-semibold text-foreground mb-4">2. Description of Services</h2>
                 <p>
-                  Fundi provides AI-powered financial intelligence services for small and medium enterprises (SMEs),
+                  fvundi provides AI-powered financial intelligence services for small and medium enterprises (SMEs),
                   including automated accounting, encrypted analytics, and investor-ready reports.
                 </p>
               </section>
@@ -48,7 +48,7 @@ export default function TermsPage() {
               <section>
                 <h2 className="text-xl font-semibold text-foreground mb-4">4. Data Processing</h2>
                 <p>
-                  Fundi processes all financial data using homomorphic encryption and zero-knowledge proofs. We never
+                  fvundi processes all financial data using homomorphic encryption and zero-knowledge proofs. We never
                   access or view raw financial data. All processing occurs on encrypted data only.
                 </p>
               </section>
@@ -56,7 +56,7 @@ export default function TermsPage() {
               <section>
                 <h2 className="text-xl font-semibold text-foreground mb-4">5. Intellectual Property</h2>
                 <p>
-                  All content, features, and functionality of Fundi's services are owned by Fundi and are protected by
+                  All content, features, and functionality of Fvundi's services are owned by fvundi and are protected by
                   international copyright, trademark, and other intellectual property laws.
                 </p>
               </section>
@@ -64,7 +64,7 @@ export default function TermsPage() {
               <section>
                 <h2 className="text-xl font-semibold text-foreground mb-4">6. Limitation of Liability</h2>
                 <p>
-                  Fundi shall not be liable for any indirect, incidental, special, consequential, or punitive damages
+                  fvundi shall not be liable for any indirect, incidental, special, consequential, or punitive damages
                   resulting from your use of or inability to use our services.
                 </p>
               </section>

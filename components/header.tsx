@@ -7,7 +7,7 @@ import { Menu, X, Gift } from "lucide-react"
 import { BookDemoModal } from "@/components/book-demo-modal"
 import { ReferEarnModal } from "@/components/refer-earn-modal"
 import { useI18n, LanguageToggle } from "@/lib/i18n"
-
+import Image from "next/image"
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [demoModalOpen, setDemoModalOpen] = useState(false)
@@ -25,11 +25,17 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
-                <span className="text-white font-bold text-sm">F</span>
-              </div>
-              <span className="font-semibold text-xl text-foreground tracking-tight">Fundi</span>
-            </Link>
+  <div className="w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center">
+    <Image
+      src="/fundi.png"
+      alt="Fundi Logo"
+      width={32}    // correspond à w-8 (8*4=32px)
+      height={32}   // correspond à h-8
+      className="object-cover"
+    />
+  </div>
+  <span className="font-semibold text-xl text-foreground tracking-tight">Fvundi</span>
+</Link>
 
             <nav className="hidden md:flex items-center gap-8">
               <Link href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
@@ -131,7 +137,7 @@ export function Header() {
                     setDemoModalOpen(true)
                     setMobileMenuOpen(false)
                   }}
-                  className="bg-gradient-to-r from-red-500 to-red-600 text-white border-0"
+                  className="bg-linear-to-r from-red-500 to-red-600 text-white border-0"
                 >
                   {t("bookDemo")}
                 </Button>

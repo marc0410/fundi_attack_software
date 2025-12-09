@@ -22,7 +22,7 @@ export function CTASection() {
             Ready to transform your financial clarity?
           </h2>
           <p className="text-lg text-primary-foreground/70 max-w-2xl mx-auto mb-10 text-balance leading-relaxed">
-            Join thousands of African SMEs who trust Fundi for secure, intelligent financial insights. Start your free
+            Join thousands of African SMEs who trust fvundi for secure, intelligent financial insights. Start your free
             trial today.
           </p>
 

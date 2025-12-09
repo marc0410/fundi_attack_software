@@ -26,7 +26,7 @@ export function WhyNowSection() {
         </p>
 
         <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto text-balance">
-          Fundi is built to propel them into the future.
+          fvundi is built to propel them into the future.
         </p>
 
         <div className="mt-12 flex items-center justify-center gap-8">

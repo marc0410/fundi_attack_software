@@ -57,7 +57,7 @@ const allArticles = [
       <h2>Challenges and Opportunities</h2>
       <p>Despite the optimism, African AI startups face unique challenges. Data availability, infrastructure gaps, and talent retention remain significant hurdles. However, these challenges also present opportunities for innovation.</p>
       
-      <p>Startups like Fundi are addressing the data challenge by using privacy-preserving AI techniques that can work with limited data while maintaining security. This approach not only solves a local problem but creates solutions with global applications.</p>
+      <p>Startups like fvundi are addressing the data challenge by using privacy-preserving AI techniques that can work with limited data while maintaining security. This approach not only solves a local problem but creates solutions with global applications.</p>
       
       <h2>Looking Ahead</h2>
       <p>The next five years will be critical for African AI. As more success stories emerge and exit values increase, we expect to see accelerated growth in both the quantity and quality of AI startups. The continent is poised to become not just a consumer of AI technology, but a significant contributor to its global development.</p>
@@ -102,7 +102,7 @@ const allArticles = [
       </ul>
       
       <h2>The Power of Forecasting</h2>
-      <p>Even basic 30-day cash flow forecasting can transform your decision-making. Tools like Fundi automate this process, giving you real-time visibility into your future cash position without manual calculations.</p>
+      <p>Even basic 30-day cash flow forecasting can transform your decision-making. Tools like fvundi automate this process, giving you real-time visibility into your future cash position without manual calculations.</p>
     `,
   },
   {
@@ -178,7 +178,7 @@ const allArticles = [
   },
   {
     id: 5,
-    title: "Fundi Metrics Explained",
+    title: "fvundi Metrics Explained",
     subtitle: "How smart signals help you improve before it's too late with real-time insights.",
     category: "Technology",
     readTime: "5 min",
@@ -190,10 +190,10 @@ const allArticles = [
     authorImage: "/african-tech-professional-man-headshot.jpg",
     views: "8.2K",
     content: `
-      <p>Understanding your business metrics shouldn't require a finance degree. Fundi's smart signals translate complex financial data into actionable insights that any founder can understand and act upon.</p>
+      <p>Understanding your business metrics shouldn't require a finance degree. Fvundi's smart signals translate complex financial data into actionable insights that any founder can understand and act upon.</p>
       
       <h2>The Trust Score</h2>
-      <p>At the heart of Fundi is the Trust Score—a comprehensive measure of your business's financial health. Unlike traditional credit scores, the Trust Score is dynamic, updating in real-time as your financial situation changes.</p>
+      <p>At the heart of fvundi is the Trust Score—a comprehensive measure of your business's financial health. Unlike traditional credit scores, the Trust Score is dynamic, updating in real-time as your financial situation changes.</p>
       
       <h2>Key Components</h2>
       <ul>
@@ -204,12 +204,12 @@ const allArticles = [
       </ul>
       
       <h2>Smart Alerts</h2>
-      <p>Fundi doesn't just show you data—it tells you what matters. Our AI analyzes your metrics continuously and alerts you when action is needed, before problems become crises.</p>
+      <p>fvundi doesn't just show you data—it tells you what matters. Our AI analyzes your metrics continuously and alerts you when action is needed, before problems become crises.</p>
       
       <blockquote>"Getting a notification that my receivables were trending toward a danger zone gave me two weeks to act instead of discovering the problem when cash ran out."</blockquote>
       
       <h2>Privacy-First Analytics</h2>
-      <p>All these insights are generated using encrypted computing. Fundi analyzes your data without ever seeing it—providing the intelligence you need while maintaining complete privacy.</p>
+      <p>All these insights are generated using encrypted computing. fvundi analyzes your data without ever seeing it—providing the intelligence you need while maintaining complete privacy.</p>
     `,
   },
 ]
@@ -224,7 +224,7 @@ const getFallbackArticle = (id: number) => ({
   image: "/business-fintech-abstract.jpg",
   featured: false,
   date: "Nov 15, 2025",
-  author: "Fundi Research Team",
+  author: "fvundi Research Team",
   authorRole: "Editorial",
   authorImage: "/professional-team-avatar.jpg",
   views: "5.2K",

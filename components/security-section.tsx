@@ -44,7 +44,7 @@ export function SecuritySection() {
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance leading-relaxed">
-            Your financial data is your most sensitive asset. Fundi uses cutting-edge cryptographic techniques to
+            Your financial data is your most sensitive asset. fvundi uses cutting-edge cryptographic techniques to
             deliver powerful insights while keeping your information completely private.
           </p>
         </div>

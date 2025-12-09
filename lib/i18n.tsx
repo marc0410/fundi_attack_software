@@ -29,7 +29,7 @@ const translations = {
     // Value Proposition
     valueTitle: "Financial clarity, total privacy",
     valueSubtitle:
-      "Fundi transforms how African SMEs manage finances — with AI that analyzes everything but sees nothing.",
+      "fvundi transforms how African SMEs manage finances — with AI that analyzes everything but sees nothing.",
     automatedAccounting: "Automated Accounting",
     automatedAccountingDesc:
       "Upload photos of receipts, invoices, or bank statements. Our AI extracts, categorizes, and reconciles automatically.",
@@ -50,7 +50,7 @@ const translations = {
       "An intelligent engine that automatically calculates carbon footprint, social impact, and governance quality.",
 
     // How it Works
-    howItWorksTitle: "How Fundi works",
+    howItWorksTitle: "How fvundi works",
     howItWorksSubtitle: "From raw data to financial intelligence in three secure steps",
     step1Title: "Connect Your Data",
     step1Desc: "Upload photos, connect mobile money, import spreadsheets, or sync bank feeds. We accept it all.",
@@ -97,7 +97,7 @@ const translations = {
     submitting: "Reserving...",
     successTitle: "You're on the list!",
     successDesc:
-      "We'll notify you as soon as Fundi launches. Thank you for believing in the future of African finance.",
+      "We'll notify you as soon as fvundi launches. Thank you for believing in the future of African finance.",
 
     // Pricing
     pricingTitle: "Simple, transparent",
@@ -123,12 +123,12 @@ const translations = {
 
     // Insight Pulse
     realTimeIntelligence: "Real-time Intelligence",
-    insightPulseTitle: "Fundi",
+    insightPulseTitle: "Fvundi",
     insightPulseHighlight: "Insight Pulse",
     insightPulseDesc: "Encrypted micro-advisory signals that guide without exposing. Pure intelligence, zero raw data.",
     encryptedSignalEngine: "Encrypted Signal Engine",
     encryptedSignalEngineDesc:
-      "Fundi Insight Pulse is a real-time signal engine that sends instant, secure micro-notifications based on projected performance patterns.",
+      "fvundi Insight Pulse is a real-time signal engine that sends instant, secure micro-notifications based on projected performance patterns.",
     zeroDataExposure: "Zero Data Exposure",
     guidanceWithoutAccess: "Guidance without raw access",
     realTimeSignals: "Real-time Signals",
@@ -142,9 +142,9 @@ const translations = {
     africaReadyDesc: "Businesses across the continent are joining the waitlist",
     countries: "countries",
     businesses: "businesses",
-    liveSignups: "Live signups",
+    liveSignups: "Live pre-orders",
     hoverDetails: "Hover on a point to see details",
-    signups: "signups",
+    signups: "pre-orders",
 
     // CTA
     ctaTitle: "Ready to transform your financial intelligence?",
@@ -173,7 +173,7 @@ const translations = {
     // FAQ
     faqTitle: "Frequently Asked",
     faqHighlight: "Questions",
-    faqSubtitle: "Everything you need to know about Fundi and how it works.",
+    faqSubtitle: "Everything you need to know about fvundi and how it works.",
     faqGeneral: "General",
     faqPricing: "Pricing",
     faqSecurity: "Security",
@@ -210,7 +210,7 @@ const translations = {
     // Value Proposition
     valueTitle: "Clarté financière, confidentialité totale",
     valueSubtitle:
-      "Fundi transforme la gestion financière des PME africaines — avec une IA qui analyse tout sans rien voir.",
+      "fvundi transforme la gestion financière des PME africaines — avec une IA qui analyse tout sans rien voir.",
     automatedAccounting: "Comptabilité Automatisée",
     automatedAccountingDesc:
       "Téléchargez des photos de reçus, factures ou relevés bancaires. Notre IA extrait, catégorise et réconcilie automatiquement.",
@@ -231,7 +231,7 @@ const translations = {
       "Un moteur intelligent qui calcule automatiquement l'empreinte carbone, l'impact social et la qualité de gouvernance.",
 
     // How it Works
-    howItWorksTitle: "Comment Fundi fonctionne",
+    howItWorksTitle: "Comment fvundi fonctionne",
     howItWorksSubtitle: "Des données brutes à l'intelligence financière en trois étapes sécurisées",
     step1Title: "Connectez vos données",
     step1Desc:
@@ -283,7 +283,7 @@ const translations = {
     submitting: "Réservation...",
     successTitle: "Vous êtes sur la liste !",
     successDesc:
-      "Nous vous notifierons dès le lancement de Fundi. Merci de croire en l'avenir de la finance africaine.",
+      "Nous vous notifierons dès le lancement de Fvundi. Merci de croire en l'avenir de la finance africaine.",
 
     // Pricing
     pricingTitle: "Tarification simple et",
@@ -310,13 +310,13 @@ const translations = {
 
     // Insight Pulse
     realTimeIntelligence: "Intelligence en Temps Réel",
-    insightPulseTitle: "Fundi",
+    insightPulseTitle: "Fvundi",
     insightPulseHighlight: "Insight Pulse",
     insightPulseDesc:
       "Signaux micro-consultatifs cryptés qui guident sans exposer. Intelligence pure, zéro donnée brute.",
     encryptedSignalEngine: "Moteur de Signaux Cryptés",
     encryptedSignalEngineDesc:
-      "Fundi Insight Pulse est un moteur de signaux en temps réel qui envoie des micro-notifications sécurisées instantanées basées sur les tendances de performance projetées.",
+      "fvundi Insight Pulse est un moteur de signaux en temps réel qui envoie des micro-notifications sécurisées instantanées basées sur les tendances de performance projetées.",
     zeroDataExposure: "Zéro Exposition de Données",
     guidanceWithoutAccess: "Guidage sans accès brut",
     realTimeSignals: "Signaux Temps Réel",
@@ -361,7 +361,7 @@ const translations = {
     // FAQ
     faqTitle: "Questions",
     faqHighlight: "Fréquentes",
-    faqSubtitle: "Tout ce que vous devez savoir sur Fundi et son fonctionnement.",
+    faqSubtitle: "Tout ce que vous devez savoir sur fvundi et son fonctionnement.",
     faqGeneral: "Général",
     faqPricing: "Tarifs",
     faqSecurity: "Sécurité",

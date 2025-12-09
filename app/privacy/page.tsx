@@ -23,7 +23,7 @@ export default function PrivacyPage() {
               <section>
                 <h2 className="text-xl font-semibold text-foreground mb-4">Our Commitment to Privacy</h2>
                 <p>
-                  At Fundi, privacy isn't just a policy — it's our core technology. We've built our entire platform
+                  At Fvundi, privacy isn't just a policy — it's our core technology. We've built our entire platform
                   around the principle that your financial data should remain yours and only yours.
                 </p>
               </section>

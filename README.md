@@ -1,4 +1,4 @@
-# Fundi landing page design
+# fvundi landing page design
 
 *Automatically synced with your [v0.app](https://v0.app) deployments*
 

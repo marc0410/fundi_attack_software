@@ -35,7 +35,7 @@ const blogArticles = [
   },
   {
     id: 5,
-    title: "Fundi Metrics Explained",
+    title: "fvundi Metrics Explained",
     insight: "How smart signals help you improve before it's too late.",
     category: "Technology",
     image: "/metrics-dashboard-analytics-ai.jpg",

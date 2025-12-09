@@ -26,7 +26,7 @@ export function SuperpowersSection() {
       <div className="relative max-w-5xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-5xl font-bold text-foreground tracking-tight">
-            What Fundi Will Do{" "}
+            What fvundi Will Do{" "}
             <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">for You</span>
           </h2>
         </div>

@@ -37,7 +37,7 @@ export function HowItWorks() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 border border-border mb-6">
             <span className="text-sm text-muted-foreground">Simple process</span>
           </div>
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4 tracking-tight">How Fundi works</h2>
+          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4 tracking-tight">How fvundi works</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
             From raw data to professional insights in three secure steps.
           </p>

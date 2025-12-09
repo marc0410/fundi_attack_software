@@ -63,7 +63,7 @@ const allArticles = [
   },
   {
     id: 5,
-    title: "Fundi Metrics Explained",
+    title: "fvundi Metrics Explained",
     subtitle: "How smart signals help you improve before it's too late with real-time insights.",
     category: "Technology",
     readTime: "5 min",
@@ -158,7 +158,7 @@ const filters = [
 const trendingArticles = [
   { id: 1, title: "The Rise of AI-Ready Startups", views: "12.4K" },
   { id: 3, title: "The Investor's New Lens", views: "9.8K" },
-  { id: 5, title: "Fundi Metrics Explained", views: "8.2K" },
+  { id: 5, title: "fvundi Metrics Explained", views: "8.2K" },
   { id: 8, title: "Connected Marketplace 2030", views: "7.1K" },
 ]
 
@@ -247,7 +247,7 @@ export default function BlogPage() {
           <div className="text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 border border-border mb-8">
               <div className="w-2 h-2 rounded-full bg-gradient-to-r from-red-500 to-red-600 animate-pulse" />
-              <span className="text-sm text-muted-foreground">Fundi Intelligence Hub</span>
+              <span className="text-sm text-muted-foreground">fvundi Intelligence Hub</span>
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">
               Insights for{" "}
@@ -424,12 +424,12 @@ export default function BlogPage() {
                 </div>
               </div>
 
-              {/* Fundi Signals of the Week */}
+              {/* fvundi Signals of the Week */}
               <div className="bg-secondary/30 backdrop-blur-xl rounded-2xl border border-border p-5 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-red-500/20 to-transparent rounded-bl-full" />
                 <div className="flex items-center gap-2 mb-4">
                   <Zap className="w-5 h-5 text-red-500" />
-                  <h3 className="text-lg font-semibold text-foreground">Fundi Signals</h3>
+                  <h3 className="text-lg font-semibold text-foreground">fvundi Signals</h3>
                 </div>
                 <div className="space-y-3">
                   {fundiSignals.map((signal, index) => (
@@ -518,7 +518,7 @@ export default function BlogPage() {
       <section className="py-16 border-t border-border">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <p className="text-lg text-muted-foreground">
-            Stay ahead with Fundi —{" "}
+            Stay ahead with fvundi —{" "}
             <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent font-medium">
               where signals become smart decisions.
             </span>

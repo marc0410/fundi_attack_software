@@ -666,7 +666,7 @@ export function EncryptedIdentityPage({ company, onClose }: EncryptedIdentityPag
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              Through Fundi's encrypted intelligence, {company.name} can now prove its financial health without
+              Through Fvundi's encrypted intelligence, {company.name} can now prove its financial health without
               revealing a single transaction. Trust becomes mathematical. Privacy becomes permanent. And investors can
               participate in Africa's growth story with confidence.
             </motion.p>
@@ -679,7 +679,7 @@ export function EncryptedIdentityPage({ company, onClose }: EncryptedIdentityPag
               className="flex items-center gap-4 pt-4"
             >
               <Heart className="w-6 h-6 text-red-400" />
-              <span className="text-white/50 text-sm">Empowered by Fundi — Privacy is power.</span>
+              <span className="text-white/50 text-sm">Empowered by fvundi — Privacy is power.</span>
             </motion.div>
           </div>
         </div>

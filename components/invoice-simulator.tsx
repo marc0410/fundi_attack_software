@@ -270,7 +270,7 @@ export function InvoiceSimulator() {
                   <CheckCircle className="w-8 h-8 text-green-500" />
                 </div>
                 <p className="text-2xl font-bold text-foreground mb-1">Analysis Complete!</p>
-                <p className="text-muted-foreground">Here's what Fundi discovered from your invoice</p>
+                <p className="text-muted-foreground">Here's what fvundi discovered from your invoice</p>
               </div>
 
               {/* Animated Results Grid */}

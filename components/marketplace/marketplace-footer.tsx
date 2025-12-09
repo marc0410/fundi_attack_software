@@ -39,7 +39,7 @@ export function MarketplaceFooter() {
 
         <div className="mt-8 pt-8 border-t border-white/5 text-center">
           <p className="text-sm text-white/40">
-            &copy; {new Date().getFullYear()} Fundi. All rights reserved. Powered by cryptographic trust.
+            &copy; {new Date().getFullYear()} Fvundi. All rights reserved. Powered by cryptographic trust.
           </p>
         </div>
       </div>
