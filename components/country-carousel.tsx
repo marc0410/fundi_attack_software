@@ -9,7 +9,7 @@ const countries = [
   { name: "Kenya", flag: "🇰🇪", signups: 98, city: "Nairobi" },
   { name: "South Africa", flag: "🇿🇦", signups: 84, city: "Johannesburg" },
   { name: "Ghana", flag: "🇬🇭", signups: 67, city: "Accra" },
-  { name: "Egypt", flag: "🇪🇬", signups: 53, city: "Cairo" },
+  { name: "Egypt", flag: "🇪🇬", signups: 54, city: "Cairo" },
   { name: "Côte d'Ivoire", flag: "🇨🇮", signups: 45, city: "Abidjan" },
   { name: "Morocco", flag: "🇲🇦", signups: 31, city: "Casablanca" },
   { name: "Tanzania", flag: "🇹🇿", signups: 29, city: "Dar es Salaam" },
