@@ -62,6 +62,9 @@ export function Header() {
               <Link href="/blog" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                 {t("blog")}
               </Link>
+              <Link href="/dashboard" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                Dashboard
+              </Link>
               <Link href="#pricing" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                 {t("pricing")}
               </Link>
